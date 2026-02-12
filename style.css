@@ -355,3 +355,86 @@ footer {
 .badge-grid div:hover {
   transform: translateY(-6px);
 }
+
+/* ================= HIGH IMPACT BADGE EFFECT ================= */
+
+.badge-grid div {
+  position: relative;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(19, 28, 47, 0.85);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Animated border glow */
+.badge-grid div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(
+    130deg,
+    rgba(56,189,248,0.2),
+    rgba(56,189,248,0.7),
+    rgba(56,189,248,0.2)
+  );
+  background-size: 300% 300%;
+  animation: badgeGlowMove 6s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: all 0.4s ease;
+}
+
+/* Light sweep effect */
+.badge-grid div::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -50%;
+  width: 200%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56,189,248,0.25),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: 0.8s ease;
+  opacity: 0;
+}
+
+/* ===== HOVER EFFECT ===== */
+
+.badge-grid div:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow:
+    0 0 25px rgba(56,189,248,0.6),
+    0 0 60px rgba(56,189,248,0.3);
+}
+
+.badge-grid div:hover::before {
+  background: linear-gradient(
+    130deg,
+    rgba(56,189,248,0.6),
+    rgba(56,189,248,1),
+    rgba(56,189,248,0.6)
+  );
+}
+
+.badge-grid div:hover::after {
+  top: -40%;
+  opacity: 1;
+}
+
+/* Glow movement animation */
+@keyframes badgeGlowMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
