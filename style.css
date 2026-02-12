@@ -171,3 +171,52 @@ footer {
   margin-bottom: 25px;
 }
 
+/* ================= DIGITAL REVEAL ANIMATION ================= */
+
+.brand-name {
+  position: relative;
+  overflow: hidden;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffffff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Fade + slide up */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Light sweep effect */
+.brand-name::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.4),
+    transparent
+  );
+  animation: sweep 2.5s ease forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes sweep {
+  to {
+    left: 100%;
+  }
+}
