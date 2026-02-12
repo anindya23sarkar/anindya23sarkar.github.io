@@ -332,6 +332,10 @@ footer {
 }
 
 .badge-category {
+  text-align: center;
+}
+
+.badge-category h4 {
   margin-bottom: 40px;
 }
 
