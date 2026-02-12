@@ -323,3 +323,35 @@ footer {
     opacity: 0;
   }
 }
+
+/* ================= BADGE SECTION ================= */
+
+.cert-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 50px;
+}
+
+.badge-category {
+  margin-bottom: 80px;
+}
+
+.badge-category h4 {
+  color: var(--accent);
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 30px;
+  align-items: start;
+}
+
+.badge-grid div {
+  transition: transform 0.3s ease;
+}
+
+.badge-grid div:hover {
+  transform: translateY(-6px);
+}
