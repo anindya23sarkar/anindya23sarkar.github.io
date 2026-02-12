@@ -198,3 +198,24 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ================= CONTACT SECTION FIX ================= */
+
+.contact {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(15,23,42,0.9),
+    rgba(10,15,28,1)
+  );
+  border-top: 1px solid rgba(56,189,248,0.2);
+}
+
+.contact h3 {
+  font-size: 1.8rem;
+}
+
+.contact .btn {
+  margin-top: 15px;
+}
