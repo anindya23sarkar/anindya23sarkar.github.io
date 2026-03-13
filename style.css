@@ -242,12 +242,13 @@ body {
 }
 
 .role-title {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--accent);
   font-weight: 400;
   margin-bottom: 12px;
   opacity: 0;
   animation: fadeUp 0.8s ease 0.4s forwards;
+  line-height: 1.8;
 }
 
 .tagline {
