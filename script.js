@@ -1,12 +1,17 @@
-// ── EMAIL: Build links at runtime — bypasses Cloudflare obfuscation ──
+// ── EMAIL: Fully JS-injected — Cloudflare never sees it in HTML ──
 (function () {
   var u = 'anindya23sarkar';
-  var d = 'gmail.com';
+  var d = 'gm' + 'ail' + '.com';
   var href = 'ma' + 'ilto:' + u + '@' + d;
   var display = document.getElementById('email-display');
-  var cta = document.getElementById('email-cta');
-  if (display) { display.href = href; }
-  if (cta) { cta.href = href; }
+  var cta    = document.getElementById('email-cta');
+  if (display) {
+    display.href        = href;
+    display.textContent = u + '@' + d;
+  }
+  if (cta) {
+    cta.href = href;
+  }
 })();
 
 
