@@ -1,4 +1,15 @@
-// Fade-in on scroll
+// Build email links at runtime — bypasses Cloudflare obfuscation
+(function() {
+  var u = 'anindya23sarkar';
+  var d = 'gmail.com';
+  var href = 'ma' + 'ilto:' + u + '@' + d;
+  var display = document.getElementById('email-display');
+  var cta = document.getElementById('email-cta');
+  if (display) { display.href = href; }
+  if (cta)     { cta.href = href; }
+})();
+
+
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
