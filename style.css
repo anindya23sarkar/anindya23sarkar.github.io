@@ -523,10 +523,6 @@ body {
 
 /* ── ABOUT GRID (keep for skills) ── */
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 48px;
-  align-items: start;
   margin-top: 32px;
 }
 
@@ -534,33 +530,71 @@ body {
   font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.8;
+  max-width: 780px;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+/* ── SKILLS SECTION ── */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 40px;
 }
 
-.skill-card {
+.skill-group {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 18px;
+  border-radius: 12px;
+  padding: 22px 26px;
+  transition: border-color 0.2s;
+}
+
+.skill-group:hover {
+  border-color: var(--border-hover);
+}
+
+.skill-group-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14px;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-group-header h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.skill-group-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  font-size: 12.5px;
   font-weight: 500;
-  transition: border-color 0.2s, transform 0.2s;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  padding: 5px 13px;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-.skill-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
+.skill-pill:hover {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.45);
 }
-
-.skill-icon { font-size: 18px; }
 
 /* ── CERTIFICATIONS ── */
 .cert-count-line {
@@ -757,9 +791,7 @@ footer {
 
 /* ── MOBILE ── */
 @media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
+  .about-grid { margin-top: 24px; }
 
   .contact-card {
     grid-template-columns: 1fr;
@@ -806,7 +838,7 @@ footer {
     gap: 14px;
   }
 
-  .skills-grid { grid-template-columns: 1fr; }
+  .skill-tags { gap: 6px; }
 
   .contact-card { padding: 24px; }
 
