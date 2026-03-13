@@ -467,12 +467,19 @@ body {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 12px;
-  width: 100%;
-  min-height: 100px;
+  width: 174px;
+  height: 294px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.badge-grid > div iframe {
+  width: 150px !important;
+  height: 270px !important;
+  border: none;
 }
 
 .badge-grid > div:hover {
