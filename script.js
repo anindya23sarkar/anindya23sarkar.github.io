@@ -1,37 +1,71 @@
-// Build email links at runtime — bypasses Cloudflare obfuscation
-(function() {
+// ── EMAIL: Build links at runtime — bypasses Cloudflare obfuscation ──
+(function () {
   var u = 'anindya23sarkar';
   var d = 'gmail.com';
   var href = 'ma' + 'ilto:' + u + '@' + d;
   var display = document.getElementById('email-display');
   var cta = document.getElementById('email-cta');
   if (display) { display.href = href; }
-  if (cta)     { cta.href = href; }
+  if (cta) { cta.href = href; }
 })();
 
 
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0, rootMargin: "0px 0px -40px 0px" }
-);
+// ── SCROLL PROGRESS BAR ──
+(function () {
+  var bar = document.getElementById('scroll-progress-bar');
+  if (!bar) return;
 
-document.querySelectorAll(".fade-in").forEach(el => {
-  observer.observe(el);
-});
+  function updateBar() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
 
-// Mobile nav toggle
-const toggle = document.querySelector(".nav-toggle");
-const navLinks = document.querySelector(".nav-links");
-if (toggle && navLinks) {
-  toggle.addEventListener("click", () => navLinks.classList.toggle("open"));
-  navLinks.querySelectorAll("a").forEach(a =>
-    a.addEventListener("click", () => navLinks.classList.remove("open"))
+  window.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+})();
+
+
+// ── EXPERIENCE CARD ENTRANCE ANIMATION ──
+(function () {
+  var cards = document.querySelectorAll('.exp-card');
+  if (!cards.length) return;
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var index = Array.prototype.indexOf.call(cards, entry.target);
+          setTimeout(function () {
+            entry.target.classList.add('exp-visible');
+          }, index * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
   );
-}
+
+  cards.forEach(function (card) {
+    observer.observe(card);
+  });
+})();
+
+
+// ── MOBILE NAV TOGGLE ──
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var navLinks = document.querySelector('.nav-links');
+  if (!toggle || !navLinks) return;
+
+  toggle.addEventListener('click', function () {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+    });
+  });
+})();
