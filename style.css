@@ -464,6 +464,9 @@ body {
 .ti-dhcp      { background: #4a148c; }
 .ti-dns       { background: #bf360c; }
 .ti-lacp      { background: #004d40; }
+.ti-8021q     { background: #1a237e; }
+.ti-qinq      { background: #311b92; }
+.ti-pagp      { background: #0d47a1; }
 .ti-fortinet  { background: #e65100; }
 .ti-tryhackme { background: #212c42; }
 .ti-splunk    { background: #000000; }
