@@ -32,6 +32,32 @@
 })();
 
 
+// ── ACHIEVEMENT CARD ENTRANCE ANIMATION ──
+(function () {
+  var cards = document.querySelectorAll('.achievement-card');
+  if (!cards.length) return;
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var index = Array.prototype.indexOf.call(cards, entry.target);
+          setTimeout(function () {
+            entry.target.classList.add('ach-visible');
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  cards.forEach(function (card) {
+    observer.observe(card);
+  });
+})();
+
+
 // ── EXPERIENCE CARD ENTRANCE ANIMATION ──
 (function () {
   var cards = document.querySelectorAll('.exp-card');
