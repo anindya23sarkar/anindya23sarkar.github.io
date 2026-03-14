@@ -416,8 +416,19 @@ body {
   box-shadow:
     0 4px 16px rgba(0,0,0,0.35),
     0 0 0 1px rgba(255,255,255,0.07);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.25s, transform 0.25s;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+}
+
+.tool-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
 }
 
 .tool-icon svg {
@@ -429,8 +440,38 @@ body {
 .tool-card:hover .tool-icon {
   box-shadow:
     0 8px 24px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(255,255,255,0.15);
+    0 0 0 1px rgba(255,255,255,0.2);
 }
+
+/* Per-tool background colours */
+.ti-cisco     { background: #1ba0d7; }
+.ti-tplink    { background: #d4222a; }
+.ti-dlink     { background: #0057a8; }
+.ti-zyxel     { background: #e87722; }
+.ti-optilink  { background: #2e7d32; }
+.ti-dcn       { background: #37474f; }
+.ti-digisol   { background: #5c6bc0; }
+.ti-gpon      { background: #6a1b9a; }
+.ti-olt       { background: #00838f; }
+.ti-onu       { background: #00695c; }
+.ti-cat6      { background: #1565c0; }
+.ti-prtg      { background: #1565c0; }
+.ti-wireshark { background: #1679a7; }
+.ti-putty     { background: #283593; }
+.ti-ping      { background: #212121; }
+.ti-tcpip     { background: #0d47a1; }
+.ti-vlan      { background: #1b5e20; }
+.ti-dhcp      { background: #4a148c; }
+.ti-dns       { background: #bf360c; }
+.ti-lacp      { background: #004d40; }
+.ti-fortinet  { background: #e65100; }
+.ti-tryhackme { background: #212c42; }
+.ti-splunk    { background: #000000; }
+.ti-iam       { background: #1a237e; }
+.ti-aws       { background: #232f3e; }
+.ti-postman   { background: #ff6c37; }
+.ti-excel     { background: #217346; }
+.ti-crm       { background: #006bb6; }
 
 .tool-card span {
   font-size: 11.5px;
