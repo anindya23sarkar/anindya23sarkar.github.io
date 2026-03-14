@@ -779,6 +779,14 @@ body {
 }
 
 /* Coloured top accent bar per category */
+/* Group colours cascade to ALL children including badge cells */
+.cert-group:nth-child(1) { --group-color: #00d4ff; }
+.cert-group:nth-child(2) { --group-color: #00e5a0; }
+.cert-group:nth-child(3) { --group-color: #ff6b6b; }
+.cert-group:nth-child(4) { --group-color: #f7b731; }
+.cert-group:nth-child(5) { --group-color: #a55eea; }
+.cert-group:nth-child(6) { --group-color: #fd9644; }
+
 .cert-group:nth-child(1) .cert-group-inner { --group-color: #00d4ff; }
 .cert-group:nth-child(2) .cert-group-inner { --group-color: #00e5a0; }
 .cert-group:nth-child(3) .cert-group-inner { --group-color: #ff6b6b; }
@@ -844,47 +852,86 @@ body {
   justify-items: center;
 }
 
+/* ── BADGE CELL: always-on coloured glow ── */
 .badge-grid > div {
   background: rgba(255,255,255,0.02);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
   padding: 10px;
   width: 174px;
   height: 294px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s, background 0.25s;
   overflow: hidden;
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  /* Always-on coloured shadow glow */
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 4px 20px rgba(0,0,0,0.4),
+    0 0 18px -4px var(--group-color, var(--accent));
 }
 
+/* Glowing coloured bottom edge — always visible */
+.badge-grid > div::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--group-color, var(--accent));
+  opacity: 0.55;
+  filter: blur(2px);
+  transition: opacity 0.3s, left 0.3s, right 0.3s;
+}
+
+/* Subtle top glow overlay — always on */
 .badge-grid > div::after {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  opacity: 0;
-  transition: opacity 0.25s;
-  background: radial-gradient(circle at 50% 0%, var(--group-color, var(--accent)), transparent 70%);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  border-radius: 14px 14px 0 0;
+  background: radial-gradient(ellipse at 50% -10%, var(--group-color, var(--accent)), transparent 70%);
+  opacity: 0.06;
   pointer-events: none;
+  transition: opacity 0.3s;
 }
 
+/* Hover: lift + intensify glow */
 .badge-grid > div:hover {
-  border-color: var(--group-color, var(--border-hover));
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 36px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.04);
+  transform: translateY(-8px) scale(1.03);
+  border-color: rgba(255,255,255,0.1);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.07),
+    0 20px 48px rgba(0,0,0,0.55),
+    0 0 32px -4px var(--group-color, var(--accent)),
+    0 0 60px -12px var(--group-color, var(--accent));
+}
+
+.badge-grid > div:hover::before {
+  left: 5%;
+  right: 5%;
+  opacity: 0.9;
+  filter: blur(3px);
 }
 
 .badge-grid > div:hover::after {
-  opacity: 0.06;
+  opacity: 0.13;
 }
 
 .badge-grid > div iframe {
   width: 150px !important;
   height: 270px !important;
   border: none;
+  position: relative;
+  z-index: 1;
 }
 
 .view-all-row {
